@@ -1,10 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import Http404
 from .models import User
-
-
-def home(request):
-    return render(request, 'home.html')
 
 
 def verify(request, uuid):
@@ -15,4 +11,4 @@ def verify(request, uuid):
 
     user.is_verified = True
     user.save()
-    return redirect('home')
+    return render(request, 'activate.html')
